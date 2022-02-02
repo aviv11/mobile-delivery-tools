@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>App ID &lt;=&gt; Key </title>
+    
+    <script type="text/javascript">
+      function setApplicationIdByKey(){
+        var applicationKey = document.getElementById('wpApplicationKeyToConvert').value;
+        if (applicationKey){
+          var valueAsInt = parseInt(applicationKey, 16);
+          document.getElementById('wpApplicationIdToConvert').value = ((valueAsInt - 5) / 7364) - 91825;
+        }
+      }
+    
+      function setApplicationKeyById(){
+        var applicationId = document.getElementById('wpApplicationIdToConvert').value;
+        if (applicationId){
+          applicationId = parseInt(applicationId);
+          var applicationKeyInDec = (((applicationId + 91825) * 7364) + 5);
+          var valueInHexa = applicationKeyInDec.toString(16);
+          document.getElementById('wpApplicationKeyToConvert').value = valueInHexa;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div>Key: <input name="wpApplicationKeyToConvert" id="wpApplicationKeyToConvert" size="10" value="" onChange="setApplicationIdByKey();" />
+    </div>
+    <br />
+		<div >ID: <input name="wpApplicationIdToConvert" id="wpApplicationIdToConvert" size="10" value="" onChange="setApplicationKeyById();" /></div>
+        <div><br /></div>
+        <div> <button name="computeButton" id="computeButton" value="">Compute</button>
+  </body>
+</html>
